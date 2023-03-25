@@ -1,0 +1,33 @@
+
+1- db.persons.aggregate([{$match:{gender:'female'}}])
+
+2- db.persons.aggregate([{$match:{isActive:true}},{$count:"activePersonCount"}])
+
+3- db.persons.aggregate([{$group:{_id:"$gender",maxAge:{$max:"$age"}}}])
+
+4- db.persons.aggregate([{$group:{_id:"$age",personAge:{$sum:1}}}])
+
+5- db.persons.aggregate([{$match:{gender:'male'}},{$group:{_id:'$company.location.country',avgAge:{$avg:'$age'}}}])
+
+6- db.persons.aggregate([{$match:{gender:'male'}},{$sort:{age:1}},{$limit:1}])
+
+7- db.persons.aggregate([{$match:{gender:'female',isActive:true}},{$sort:{age:-1}},{$limit:1}])
+
+8- db.persons.aggregate([{$match:{tags:'excepteur'}},{$count:"countOfTags"}])
+
+9- db.persons.aggregate([{$match:{gender:'female',isActive:true}},{$group:{_id:'$favoriteFruit',NumOfFemale:{$sum:1}}},{$out:'femalesFavourite'}])
+
+// to test ====> db.femalesFavourite.find()
+
+10- db.persons.getIndexes()
+
+11- db.persons.find({age:{$gt:25}}).explain('executionStats')
+
+12- db.persons.createIndex({age:1},{background:true,name:'IndexOfAge'})
+
+13- before==> totalDocsExamined: 1000
+    after ==> totalDocsExamined: 719
+
+14- db.persons.createIndex({index:1},{background:true,name:'Indexe',unique:true})
+
+15- random> db.persons.dropIndexes()

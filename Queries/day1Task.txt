@@ -1,0 +1,55 @@
+﻿
+1- use iti
+   db.learners.insertOne({name:"heba",age:22,hobbies:['cooking','readingNovels'],mail:'hebaelsaidali@gmail.com'})
+
+2- db.learners.insertMany([{name:'yomna',age:23,mail:'yomna@gmail.com'},{name:'ganna',age:22,mail:'ganna@gmail.com'},{name:'sara',age:22,mail:'sara@gmail.com'}])
+
+3- db.createCollection ('courses')
+
+4- db.courses.insertMany([{name:"SQL",Insrtuctor:'Ramy'},{name:"C",Instructor:"Mohammed"},{name:"SWE",Instructor:"Ali"},{name:"English",Instructor:"Mai"},{name:"DS",Instructor:"mona"}])
+
+5- db.learners.updateOne({name:'heba'},{$set:{grades:[50,60,70,80]}})
+
+6- db.learners.updateOne({name:'heba'},{$set:{address:{city:"Damitta",street:"makram"}}})
+
+7- db.courses.updateMany({},{$set:{grades:100}})
+
+8- db.courses.updateOne({},{$mul:{grade:1.2}}) 
+
+9-  db.learners.updateOne({name:'heba'},{$set:{'grades.0':20}})
+
+10- db.learners.updateOne({name:'heba'},{$set:{'address.city':"ismailia"}})
+
+11- db.courses.deleteMany({},{grades:{$eq:100}})
+
+12- db.courses.deleteOne({grades:90})
+
+13- db.learners.drop()
+
+14-  db.dropDatabase()
+
+15- mongeimport --jsonArray --db random --collection persons --file D:\Persons.json
+
+16- use random
+    db.persons.find().pretty().toArray()
+
+17- db.persons.find({},{_id:0,name:1,gender:1,age:1})
+
+18- db.persons.find({eyeColor:'brown'}).limit(2)
+
+19- db.persons.find({age:{$gt:30}}).count()
+
+20- db.persons.find({},{age:1}).sort({age:-1}).limit(2)
+
+21- db.persons.find({eyeColor:{$nin:['brown','blue']}})
+
+22- db.persons.find({favoriteFruit:{$in:['apple','strawerry']}})
+
+
+// ممكن اعرف ليه الحل ده مش بيطلع لي اي حاجة لا ايرور والا بيعرض الداتا؟؟
+===>>>> db.persons.find({$and:[{favoriteFruit:{$eq:'apple'}},{favoriteFruit:{$eq:'strawberry'}}]})
+
+
+23- db.persons.updateMany({age:{$gt:20, $lt:30}},{$push:{tags:'bouns'}})
+
+24- db.persons.updateMany({$and:[{isActive:true},{name:{$not:{$eq:'Aurelia Gonzales'}}}]},{$inc:{age:1}})
