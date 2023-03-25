@@ -45,11 +45,6 @@
 
 22- db.persons.find({favoriteFruit:{$in:['apple','strawerry']}})
 
-
-// ممكن اعرف ليه الحل ده مش بيطلع لي اي حاجة لا ايرور والا بيعرض الداتا؟؟
-===>>>> db.persons.find({$and:[{favoriteFruit:{$eq:'apple'}},{favoriteFruit:{$eq:'strawberry'}}]})
-
-
 23- db.persons.updateMany({age:{$gt:20, $lt:30}},{$push:{tags:'bouns'}})
 
 24- db.persons.updateMany({$and:[{isActive:true},{name:{$not:{$eq:'Aurelia Gonzales'}}}]},{$inc:{age:1}})
